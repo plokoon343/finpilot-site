@@ -79,7 +79,19 @@
   .card p{color:var(--muted);font-size:1rem}
 
   /* Screenshots gallery (placeholders until real screens are dropped in) */
-  .shots{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;max-width:var(--maxw);margin:0 auto}
+  .shots{display:grid;grid-template-columns:1fr 1fr;gap:22px;max-width:var(--maxw);margin:0 auto}
+  /* Desktop (web app) screenshots in a browser frame */
+  .shotw{border-radius:16px;overflow:hidden;border:1px solid var(--border);background:var(--navy);box-shadow:var(--shadow);transition:transform .25s}
+  .shotw:hover{transform:translateY(-6px)}
+  .shotw .browser{display:flex;gap:6px;align-items:center;padding:9px 12px;background:#0e1830;border-bottom:1px solid var(--border)}
+  .shotw .browser span{width:11px;height:11px;border-radius:50%;background:#33415c}
+  .shotw .browser span:nth-child(1){background:#ff5f57}.shotw .browser span:nth-child(2){background:#febc2e}.shotw .browser span:nth-child(3){background:#28c840}
+  .shotw img{width:100%;display:block}
+  .shotw.feature{grid-column:1/-1}
+  .shot-cap{text-align:center;color:var(--muted);font-size:.9rem;margin-top:10px}
+  /* Mobile placeholders until the redesigned app is screenshot-ready */
+  .mobile-note{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;margin-top:28px}
+  .phone-ph{width:150px;aspect-ratio:9/19;border-radius:26px;border:1px dashed var(--border);background:linear-gradient(160deg,#131d33,#0b1326);display:grid;place-items:center;text-align:center;color:#7d8aa3;font-size:.82rem;padding:18px;box-shadow:var(--shadow)}
   .shot{border-radius:24px;overflow:hidden;border:1px solid var(--border);background:var(--navy);aspect-ratio:9/16;position:relative;box-shadow:var(--shadow);transition:transform .25s}
   .shot:hover{transform:translateY(-8px) rotate(-1deg)}
   .shot img{width:100%;height:100%;object-fit:cover;display:block}
@@ -277,40 +289,22 @@
 <section class="section" id="screens">
   <div class="section-head reveal"><span class="eyebrow">A peek inside</span><h2>Designed to feel effortless</h2></div>
   <div class="shots">
-    <div class="shot reveal" data-d="1">
-      <div class="mock">
-        <div class="m-top"><span>9:41</span><span>Dashboard</span></div>
-        <div class="m-balance"><div class="l">Total balance</div><div class="v">₦842,500</div></div>
-        <div class="m-row">
-          <div class="m-stat"><div class="l">Income</div><div class="v">₦1.2M</div></div>
-          <div class="m-stat"><div class="l">Spent</div><div class="v">₦358k</div></div>
-        </div>
-        <div class="m-chart"><i style="height:42%"></i><i style="height:66%"></i><i style="height:50%"></i><i style="height:82%"></i><i style="height:60%"></i><i style="height:96%"></i><i style="height:72%"></i></div>
-        <div class="m-tx"><span class="m-dot"></span><span class="grow">Salary</span><span class="m-amt">+₦450k</span></div>
-        <div class="m-tx"><span class="m-dot" style="background:#ef4444"></span><span class="grow">Groceries</span><span class="m-amt out">-₦12k</span></div>
-      </div>
-    </div>
-    <div class="shot reveal" data-d="2">
-      <div class="mock">
-        <div class="m-top"><span>9:41</span><span>Budget</span></div>
-        <div class="m-title">June budget</div>
-        <div class="m-cat"><div class="m-label"><span>Food</span><span>₦48k / ₦60k</span></div><div class="m-prog"><i style="width:80%"></i></div></div>
-        <div class="m-cat"><div class="m-label"><span>Transport</span><span>₦22k / ₦30k</span></div><div class="m-prog"><i style="width:73%"></i></div></div>
-        <div class="m-cat"><div class="m-label"><span>Data</span><span>₦9k / ₦10k</span></div><div class="m-prog"><i style="width:90%;background:linear-gradient(90deg,#f59e0b,#ef4444)"></i></div></div>
-        <div class="m-cat"><div class="m-label"><span>Leisure</span><span>₦15k / ₦40k</span></div><div class="m-prog"><i style="width:38%"></i></div></div>
-        <div class="m-cat"><div class="m-label"><span>Savings</span><span>₦50k / ₦50k</span></div><div class="m-prog"><i style="width:100%"></i></div></div>
-      </div>
-    </div>
-    <div class="shot reveal" data-d="3">
-      <div class="mock">
-        <div class="m-top"><span>9:41</span><span>Import</span></div>
-        <div class="m-title">Statement imported</div>
-        <div class="m-up">GTBank_June.pdf · 142 transactions</div>
-        <div class="m-tx"><span class="m-check"><svg viewBox="0 0 24 24" width="10" height="10" fill="none" stroke="#fff" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></span><span class="grow">POS · Shoprite</span><span class="m-amt out">-₦8.5k</span></div>
-        <div class="m-tx"><span class="m-check"><svg viewBox="0 0 24 24" width="10" height="10" fill="none" stroke="#fff" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></span><span class="grow">Transfer · Rent</span><span class="m-amt out">-₦220k</span></div>
-        <div class="m-tx"><span class="m-check"><svg viewBox="0 0 24 24" width="10" height="10" fill="none" stroke="#fff" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></span><span class="grow">Salary</span><span class="m-amt">+₦450k</span></div>
-      </div>
-    </div>
+    <figure class="shotw feature reveal" data-d="1">
+      <div class="browser"><span></span><span></span><span></span></div>
+      <img src="assets/screens/dashboard.png" alt="Automonie financial dashboard on the web app" loading="lazy" />
+    </figure>
+    <figure class="shotw reveal" data-d="2">
+      <div class="browser"><span></span><span></span><span></span></div>
+      <img src="assets/screens/budget.png" alt="Budgets with spending-by-category breakdown" loading="lazy" />
+    </figure>
+    <figure class="shotw reveal" data-d="3">
+      <div class="browser"><span></span><span></span><span></span></div>
+      <img src="assets/screens/health.png" alt="Financial health insights and key metrics" loading="lazy" />
+    </figure>
+  </div>
+  <div class="mobile-note reveal">
+    <div class="phone-ph">Android app — the same Automonie, in your pocket</div>
+    <div class="phone-ph">Mobile screenshots coming soon</div>
   </div>
 </section>
 
