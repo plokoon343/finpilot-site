@@ -88,6 +88,7 @@
   .shotw .browser span:nth-child(1){background:#ff5f57}.shotw .browser span:nth-child(2){background:#febc2e}.shotw .browser span:nth-child(3){background:#28c840}
   .shotw img{width:100%;display:block}
   .shotw.feature{grid-column:1/-1}
+  .ph-wide{aspect-ratio:16/9;display:grid;place-items:center;color:#7d8aa3;font-size:.95rem;text-align:center;padding:24px}
   .shot-cap{text-align:center;color:var(--muted);font-size:.9rem;margin-top:10px}
   /* Mobile placeholders until the redesigned app is screenshot-ready */
   .mobile-note{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;margin-top:28px}
@@ -291,15 +292,18 @@
   <div class="shots">
     <figure class="shotw feature reveal" data-d="1">
       <div class="browser"><span></span><span></span><span></span></div>
-      <img src="assets/screens/dashboard.png" alt="Automonie financial dashboard on the web app" loading="lazy" />
+      <img src="assets/screens/dashboard.png" alt="Automonie financial dashboard on the web app" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='grid';" />
+      <div class="ph-wide" style="display:none">Dashboard — screenshot coming soon</div>
     </figure>
     <figure class="shotw reveal" data-d="2">
       <div class="browser"><span></span><span></span><span></span></div>
-      <img src="assets/screens/budget.png" alt="Budgets with spending-by-category breakdown" loading="lazy" />
+      <img src="assets/screens/budget.png" alt="Budgets with spending-by-category breakdown" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='grid';" />
+      <div class="ph-wide" style="display:none">Budget — screenshot coming soon</div>
     </figure>
     <figure class="shotw reveal" data-d="3">
       <div class="browser"><span></span><span></span><span></span></div>
-      <img src="assets/screens/health.png" alt="Financial health insights and key metrics" loading="lazy" />
+      <img src="assets/screens/health.png" alt="Financial health insights and key metrics" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='grid';" />
+      <div class="ph-wide" style="display:none">Financial health — screenshot coming soon</div>
     </figure>
   </div>
   <div class="mobile-note reveal">
