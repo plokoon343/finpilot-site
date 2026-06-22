@@ -103,6 +103,37 @@
   .phones-row{margin-top:48px;align-items:center}
   .floatwrap-b{animation-delay:-2.2s}
   .floatwrap-c{animation-delay:-4.4s}
+  /* ===== Feature panels (PiggyVest-style) with realistic devices ===== */
+  .fpanel{padding:74px 6vw;overflow:hidden}
+  .fpanel .fp-in{max-width:var(--maxw);margin:0 auto;display:flex;gap:56px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+  .fpanel.alt .fp-in{flex-direction:row-reverse}
+  .fp-copy{flex:1 1 340px;max-width:520px}
+  .fp-copy h3{font-size:2.5rem;line-height:1.1;margin:6px 0 16px;color:#fff;font-weight:700}
+  .fp-copy p{font-size:1.14rem;line-height:1.7;color:rgba(255,255,255,.85);max-width:440px}
+  .fp-copy .eyebrow{color:rgba(255,255,255,.85)}
+  .fp-device{flex:1 1 360px;display:flex;justify-content:center;align-items:center;min-height:440px;perspective:1700px}
+  .fpanel.g{background:linear-gradient(135deg,#0a7a4f,#055f3c)}
+  .fpanel.m{background:linear-gradient(135deg,#0e9f6e,#0a7a4f)}
+  .fpanel.d{background:linear-gradient(135deg,#16213e,#0b1326)}
+  /* realistic iPhone */
+  .iphone{position:relative;width:248px;border-radius:44px;background:linear-gradient(160deg,#1a2030,#05070d);padding:11px;box-shadow:0 40px 80px rgba(0,0,0,.45);transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+  .iphone::before{content:'';position:absolute;right:-3px;top:130px;width:3px;height:64px;background:#2a3146;border-radius:3px}
+  .iphone::after{content:'';position:absolute;left:-3px;top:96px;width:3px;height:36px;background:#2a3146;border-radius:3px}
+  .iphone .scr{position:relative;border-radius:34px;overflow:hidden;background:#000}
+  .iphone .scr img{width:100%;display:block}
+  .iphone .island{position:absolute;top:14px;left:50%;transform:translateX(-50%);width:84px;height:24px;background:#000;border-radius:14px;z-index:4}
+  .iphone .glare{position:absolute;inset:0;border-radius:34px;background:linear-gradient(125deg,rgba(255,255,255,.16),rgba(255,255,255,0) 40%);pointer-events:none;z-index:3}
+  /* realistic laptop */
+  .laptop{position:relative;width:560px;max-width:100%;transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+  .laptop .lid{background:linear-gradient(160deg,#1a2030,#05070d);border-radius:14px;padding:10px 10px 0;box-shadow:0 40px 80px rgba(0,0,0,.45)}
+  .laptop .lid .scr{border-radius:6px;overflow:hidden;background:#000;border:1px solid #2a3146}
+  .laptop .lid .scr img{width:100%;display:block}
+  .laptop .deck{height:14px;background:linear-gradient(#c7ccd6,#9aa1b0);border-radius:0 0 11px 11px;position:relative;margin:0 -18px}
+  .laptop .deck::after{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:96px;height:6px;background:#7d8595;border-radius:0 0 8px 8px}
+  .tiltR{transform:rotateY(-16deg) rotateX(5deg)}
+  .tiltL{transform:rotateY(16deg) rotateX(5deg)}
+  .fp-device .iphone:hover,.fp-device .laptop:hover{transform:rotateY(0) rotateX(0) scale(1.02)}
+  @media (max-width:760px){.fp-copy h3{font-size:2rem}.fp-device{min-height:380px}}
   .shot{border-radius:24px;overflow:hidden;border:1px solid var(--border);background:var(--navy);aspect-ratio:9/16;position:relative;box-shadow:var(--shadow);transition:transform .25s}
   .shot:hover{transform:translateY(-8px) rotate(-1deg)}
   .shot img{width:100%;height:100%;object-fit:cover;display:block}
@@ -215,7 +246,6 @@
   <a href="#top" class="brand"><span class="logo"><svg class="ic" viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M7 14l4-4 3 3 5-6"/></svg></span><span class="wordmark">Auto<span class="brand-accent">monie</span></span></a>
   <nav class="nav-links" id="navLinks">
     <a href="#features">Features</a>
-    <a href="#screens">Screens</a>
     <a href="#how">How it works</a>
     <a href="#faq">FAQ</a>
     <a class="btn btn-ghost" data-app="web">Open web app</a>
@@ -269,15 +299,74 @@
 </section>
 
 <!-- FEATURES -->
-<section class="section" id="features">
-  <div class="section-head reveal"><span class="eyebrow">Everything in one place</span><h2>Features built to keep you ahead</h2></div>
-  <div class="grid">
-    <article class="card reveal" data-d="1"><div class="card-ic"><svg class="ic" viewBox="0 0 24 24"><path d="M14 3v5h5"/><path d="M14 3H6v18h12V8z"/><path d="M9 13l3-3 3 3M12 10v7"/></svg></div><h3>Statement import</h3><p>Upload a CSV, Excel, or PDF statement — even password-protected ones — and we categorise it automatically.</p></article>
-    <article class="card reveal" data-d="2"><div class="card-ic"><svg class="ic" viewBox="0 0 24 24"><path d="M12 3v9l6 4"/><circle cx="12" cy="12" r="9"/></svg></div><h3>Smart budgets</h3><p>Set monthly limits per category and get an in-app alert before you overspend.</p></article>
-    <article class="card reveal" data-d="3"><div class="card-ic"><svg class="ic" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></svg></div><h3>Goals</h3><p>Save toward what matters with progress tracking and contributions from your wallet.</p></article>
-    <article class="card reveal" data-d="1"><div class="card-ic"><svg class="ic" viewBox="0 0 24 24"><path d="M3 17l6-6 4 4 8-8"/><path d="M14 7h7v7"/></svg></div><h3>Auto-savings</h3><p>Fixed-amount or round-up rules quietly grow your savings every time you transact.</p></article>
-    <article class="card reveal" data-d="2"><div class="card-ic"><svg class="ic" viewBox="0 0 24 24"><path d="M3 7h15a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M3 7V6a2 2 0 0 1 2-2h11"/><circle cx="16" cy="13" r="1.4"/></svg></div><h3>Wallet</h3><p>Deposit, withdraw to any account, and see every movement at a glance.</p></article>
-    <article class="card reveal" data-d="3"><div class="card-ic"><svg class="ic" viewBox="0 0 24 24"><path d="M4 19V5M4 19h16M8 19v-6M12 19V9M16 19v-9M20 19V7"/></svg></div><h3>Insights</h3><p>Net worth, spending ratios, and trends that tell you exactly where your money goes.</p></article>
+<section class="section head-only" id="features">
+  <div class="section-head reveal"><span class="eyebrow">Everything in one place</span><h2>How each feature works</h2></div>
+</section>
+
+<!-- FEATURE PANELS -->
+<section class="fpanel g">
+  <div class="fp-in">
+    <div class="fp-copy reveal">
+      <span class="eyebrow">Import in seconds</span>
+      <h3>Statement import</h3>
+      <p>Upload a CSV, Excel, or PDF statement — even password-protected ones — and we categorise it automatically.</p>
+    </div>
+    <div class="fp-device"><div class="floatwrap"><div class="iphone tiltR"><div class="island"></div><div class="glare"></div><div class="scr"><img src="assets/screens/mobile-transactions.jpg" alt="Imported transactions on Automonie" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='grid';"><div class="ph-phone" style="display:none">Coming soon</div></div></div></div></div>
+  </div>
+</section>
+
+<section class="fpanel d alt">
+  <div class="fp-in">
+    <div class="fp-copy reveal">
+      <span class="eyebrow">Stay on budget</span>
+      <h3>Smart budgets</h3>
+      <p>Set monthly limits per category and get an in-app alert before you overspend.</p>
+    </div>
+    <div class="fp-device"><div class="floatwrap floatwrap-b"><div class="laptop tiltL"><div class="lid"><div class="scr"><img src="assets/screens/budget.png" alt="Budget page on Automonie" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='grid';"><div class="ph-wide" style="display:none">Coming soon</div></div></div><div class="deck"></div></div></div></div>
+  </div>
+</section>
+
+<section class="fpanel m">
+  <div class="fp-in">
+    <div class="fp-copy reveal">
+      <span class="eyebrow">Save with intent</span>
+      <h3>Goals</h3>
+      <p>Save toward what matters with progress tracking and contributions from your wallet. Lock a goal as a savings plan until its deadline.</p>
+    </div>
+    <div class="fp-device"><div class="floatwrap floatwrap-c"><div class="iphone tiltR"><div class="island"></div><div class="glare"></div><div class="scr"><img src="assets/screens/mobile-goals.jpg" alt="Goals on Automonie" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='grid';"><div class="ph-phone" style="display:none">Coming soon</div></div></div></div></div>
+  </div>
+</section>
+
+<section class="fpanel g alt">
+  <div class="fp-in">
+    <div class="fp-copy reveal">
+      <span class="eyebrow">Effortless saving</span>
+      <h3>Auto-savings</h3>
+      <p>Fixed-amount or round-up rules quietly grow your savings every time you transact.</p>
+    </div>
+    <div class="fp-device"><div class="floatwrap"><div class="iphone tiltL"><div class="island"></div><div class="glare"></div><div class="scr"><img src="assets/screens/mobile-savings.jpg" alt="Savings rule on Automonie" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='grid';"><div class="ph-phone" style="display:none">Coming soon</div></div></div></div></div>
+  </div>
+</section>
+
+<section class="fpanel d">
+  <div class="fp-in">
+    <div class="fp-copy reveal">
+      <span class="eyebrow">Your money, in motion</span>
+      <h3>Wallet</h3>
+      <p>Deposit, withdraw to any account, and see every movement at a glance.</p>
+    </div>
+    <div class="fp-device"><div class="floatwrap floatwrap-b"><div class="iphone tiltR"><div class="island"></div><div class="glare"></div><div class="scr"><div class="ph-phone">Wallet — screenshot coming soon</div></div></div></div></div>
+  </div>
+</section>
+
+<section class="fpanel m alt">
+  <div class="fp-in">
+    <div class="fp-copy reveal">
+      <span class="eyebrow">Know where it goes</span>
+      <h3>Insights</h3>
+      <p>Net worth, spending ratios, and trends that tell you exactly where your money goes.</p>
+    </div>
+    <div class="fp-device"><div class="floatwrap floatwrap-c"><div class="laptop tiltL"><div class="lid"><div class="scr"><img src="assets/screens/health.png" alt="Financial health insights on Automonie" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='grid';"><div class="ph-wide" style="display:none">Coming soon</div></div></div><div class="deck"></div></div></div></div>
   </div>
 </section>
 
@@ -293,60 +382,6 @@
       <li><svg class="ic" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg> Alerts before you blow the budget</li>
       <li><svg class="ic" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg> Save automatically, every single day</li>
     </ul>
-  </div>
-</section>
-
-<!-- SCREENSHOTS -->
-<section class="section" id="screens">
-  <div class="section-head reveal"><span class="eyebrow">A peek inside</span><h2>Designed to feel effortless</h2></div>
-  <div class="scene">
-    <figure class="device3d browser3d">
-      <div class="browser"><span></span><span></span><span></span><span class="url">app.automonie-ng.com</span></div>
-      <img src="assets/screens/dashboard.png" alt="Automonie dashboard (web)" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='grid';" />
-      <div class="ph-wide" style="display:none">Dashboard — screenshot coming soon</div>
-    </figure>
-    <div class="floatwrap">
-      <figure class="device3d phone3d">
-        <div class="notch"></div>
-        <img src="assets/screens/mobile-transactions.jpg" alt="Automonie transactions (mobile)" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='grid';" />
-        <div class="ph-phone" style="display:none">Mobile app<br/>coming soon</div>
-      </figure>
-    </div>
-  </div>
-  <div class="shots3d">
-    <figure class="device3d browser3d small">
-      <div class="browser"><span></span><span></span><span></span><span class="url">Budget</span></div>
-      <img src="assets/screens/budget.png" alt="Budgets" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='grid';" />
-      <div class="ph-wide" style="display:none">Budget — screenshot coming soon</div>
-    </figure>
-    <figure class="device3d browser3d small">
-      <div class="browser"><span></span><span></span><span></span><span class="url">Financial health</span></div>
-      <img src="assets/screens/health.png" alt="Financial health" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='grid';" />
-      <div class="ph-wide" style="display:none">Financial health — screenshot coming soon</div>
-    </figure>
-  </div>
-  <div class="shots3d phones-row">
-    <div class="floatwrap floatwrap-b">
-      <figure class="device3d phone3d small">
-        <div class="notch"></div>
-        <img src="assets/screens/mobile-goals.jpg" alt="Goals (mobile)" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='grid';" />
-        <div class="ph-phone" style="display:none">Goals — coming soon</div>
-      </figure>
-    </div>
-    <div class="floatwrap">
-      <figure class="device3d phone3d small">
-        <div class="notch"></div>
-        <img src="assets/screens/mobile-savings.jpg" alt="Savings rule (mobile)" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='grid';" />
-        <div class="ph-phone" style="display:none">Savings — coming soon</div>
-      </figure>
-    </div>
-    <div class="floatwrap floatwrap-c">
-      <figure class="device3d phone3d small">
-        <div class="notch"></div>
-        <img src="assets/screens/mobile-bills.jpg" alt="Bills (mobile)" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='grid';" />
-        <div class="ph-phone" style="display:none">Bills — coming soon</div>
-      </figure>
-    </div>
   </div>
 </section>
 
