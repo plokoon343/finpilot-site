@@ -79,20 +79,25 @@
   .card p{color:var(--muted);font-size:1rem}
 
   /* Screenshots gallery (placeholders until real screens are dropped in) */
-  .shots{display:grid;grid-template-columns:1fr 1fr;gap:22px;max-width:var(--maxw);margin:0 auto}
-  /* Desktop (web app) screenshots in a browser frame */
-  .shotw{border-radius:16px;overflow:hidden;border:1px solid var(--border);background:var(--navy);box-shadow:var(--shadow);transition:transform .25s}
-  .shotw:hover{transform:translateY(-6px)}
-  .shotw .browser{display:flex;gap:6px;align-items:center;padding:9px 12px;background:#0e1830;border-bottom:1px solid var(--border)}
-  .shotw .browser span{width:11px;height:11px;border-radius:50%;background:#33415c}
-  .shotw .browser span:nth-child(1){background:#ff5f57}.shotw .browser span:nth-child(2){background:#febc2e}.shotw .browser span:nth-child(3){background:#28c840}
-  .shotw img{width:100%;display:block}
-  .shotw.feature{grid-column:1/-1}
-  .ph-wide{aspect-ratio:16/9;display:grid;place-items:center;color:#7d8aa3;font-size:.95rem;text-align:center;padding:24px}
-  .shot-cap{text-align:center;color:var(--muted);font-size:.9rem;margin-top:10px}
-  /* Mobile placeholders until the redesigned app is screenshot-ready */
-  .mobile-note{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;margin-top:28px}
-  .phone-ph{width:150px;aspect-ratio:9/19;border-radius:26px;border:1px dashed var(--border);background:linear-gradient(160deg,#131d33,#0b1326);display:grid;place-items:center;text-align:center;color:#7d8aa3;font-size:.82rem;padding:18px;box-shadow:var(--shadow)}
+  /* 3D device showcase */
+  .scene{perspective:1700px;display:flex;gap:48px;align-items:center;justify-content:center;max-width:var(--maxw);margin:0 auto;flex-wrap:wrap}
+  .device3d{transform-style:preserve-3d;transition:transform .7s cubic-bezier(.2,.7,.2,1);box-shadow:0 45px 90px rgba(0,0,0,.5)}
+  .device3d:hover{transform:rotateY(0) rotateX(0) scale(1.02)}
+  .browser3d{flex:1 1 420px;max-width:760px;border:1px solid var(--border);background:#0b1326;border-radius:14px;overflow:hidden;transform:rotateY(17deg) rotateX(6deg)}
+  .browser3d .browser{display:flex;gap:6px;align-items:center;padding:10px 14px;background:#0e1830;border-bottom:1px solid var(--border)}
+  .browser3d .browser span{width:11px;height:11px;border-radius:50%}
+  .browser3d .browser span:nth-child(1){background:#ff5f57}.browser3d .browser span:nth-child(2){background:#febc2e}.browser3d .browser span:nth-child(3){background:#28c840}
+  .browser3d .url{margin-left:10px;font-size:.72rem;color:#64748b;background:#0b1326;border-radius:20px;padding:4px 12px;flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .browser3d img{width:100%;display:block}
+  .browser3d.small{flex:0 1 430px}
+  .floatwrap{animation:bob 6.5s ease-in-out infinite}
+  @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-16px)}}
+  .phone3d{width:240px;border:9px solid #0e1830;border-radius:38px;background:#0e1830;overflow:hidden;transform:rotateY(-16deg) rotateX(6deg);position:relative}
+  .phone3d img{width:100%;display:block;border-radius:28px}
+  .phone3d .notch{position:absolute;top:10px;left:50%;transform:translateX(-50%);width:90px;height:18px;background:#0e1830;border-radius:0 0 14px 14px;z-index:2}
+  .ph-wide{aspect-ratio:16/10;display:grid;place-items:center;color:#7d8aa3;font-size:.95rem;text-align:center;padding:24px}
+  .ph-phone{aspect-ratio:9/19;display:grid;place-items:center;color:#7d8aa3;font-size:.82rem;text-align:center;padding:18px}
+  .shots3d{display:flex;gap:36px;justify-content:center;flex-wrap:wrap;margin-top:56px;perspective:1700px}
   .shot{border-radius:24px;overflow:hidden;border:1px solid var(--border);background:var(--navy);aspect-ratio:9/16;position:relative;box-shadow:var(--shadow);transition:transform .25s}
   .shot:hover{transform:translateY(-8px) rotate(-1deg)}
   .shot img{width:100%;height:100%;object-fit:cover;display:block}
@@ -289,26 +294,31 @@
 <!-- SCREENSHOTS -->
 <section class="section" id="screens">
   <div class="section-head reveal"><span class="eyebrow">A peek inside</span><h2>Designed to feel effortless</h2></div>
-  <div class="shots">
-    <figure class="shotw feature reveal" data-d="1">
-      <div class="browser"><span></span><span></span><span></span></div>
-      <img src="assets/screens/dashboard.png" alt="Automonie financial dashboard on the web app" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='grid';" />
+  <div class="scene">
+    <figure class="device3d browser3d">
+      <div class="browser"><span></span><span></span><span></span><span class="url">app.automonie-ng.com</span></div>
+      <img src="assets/screens/dashboard.png" alt="Automonie dashboard (web)" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='grid';" />
       <div class="ph-wide" style="display:none">Dashboard — screenshot coming soon</div>
     </figure>
-    <figure class="shotw reveal" data-d="2">
-      <div class="browser"><span></span><span></span><span></span></div>
-      <img src="assets/screens/budget.png" alt="Budgets with spending-by-category breakdown" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='grid';" />
+    <div class="floatwrap">
+      <figure class="device3d phone3d">
+        <div class="notch"></div>
+        <img src="assets/screens/mobile-home.png" alt="Automonie home (mobile)" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='grid';" />
+        <div class="ph-phone" style="display:none">Mobile app<br/>coming soon</div>
+      </figure>
+    </div>
+  </div>
+  <div class="shots3d">
+    <figure class="device3d browser3d small">
+      <div class="browser"><span></span><span></span><span></span><span class="url">Budget</span></div>
+      <img src="assets/screens/budget.png" alt="Budgets" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='grid';" />
       <div class="ph-wide" style="display:none">Budget — screenshot coming soon</div>
     </figure>
-    <figure class="shotw reveal" data-d="3">
-      <div class="browser"><span></span><span></span><span></span></div>
-      <img src="assets/screens/health.png" alt="Financial health insights and key metrics" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='grid';" />
+    <figure class="device3d browser3d small">
+      <div class="browser"><span></span><span></span><span></span><span class="url">Financial health</span></div>
+      <img src="assets/screens/health.png" alt="Financial health" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='grid';" />
       <div class="ph-wide" style="display:none">Financial health — screenshot coming soon</div>
     </figure>
-  </div>
-  <div class="mobile-note reveal">
-    <div class="phone-ph">Android app — the same Automonie, in your pocket</div>
-    <div class="phone-ph">Mobile screenshots coming soon</div>
   </div>
 </section>
 
