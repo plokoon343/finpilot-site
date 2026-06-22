@@ -98,6 +98,11 @@
   .ph-wide{aspect-ratio:16/10;display:grid;place-items:center;color:#7d8aa3;font-size:.95rem;text-align:center;padding:24px}
   .ph-phone{aspect-ratio:9/19;display:grid;place-items:center;color:#7d8aa3;font-size:.82rem;text-align:center;padding:18px}
   .shots3d{display:flex;gap:36px;justify-content:center;flex-wrap:wrap;margin-top:56px;perspective:1700px}
+  .phone3d.small{width:188px;border-width:7px;border-radius:32px}
+  .phone3d.small .notch{width:70px;height:14px}
+  .phones-row{margin-top:48px;align-items:center}
+  .floatwrap-b{animation-delay:-2.2s}
+  .floatwrap-c{animation-delay:-4.4s}
   .shot{border-radius:24px;overflow:hidden;border:1px solid var(--border);background:var(--navy);aspect-ratio:9/16;position:relative;box-shadow:var(--shadow);transition:transform .25s}
   .shot:hover{transform:translateY(-8px) rotate(-1deg)}
   .shot img{width:100%;height:100%;object-fit:cover;display:block}
@@ -303,7 +308,7 @@
     <div class="floatwrap">
       <figure class="device3d phone3d">
         <div class="notch"></div>
-        <img src="assets/screens/mobile-home.png" alt="Automonie home (mobile)" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='grid';" />
+        <img src="assets/screens/mobile-transactions.jpg" alt="Automonie transactions (mobile)" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='grid';" />
         <div class="ph-phone" style="display:none">Mobile app<br/>coming soon</div>
       </figure>
     </div>
@@ -319,6 +324,29 @@
       <img src="assets/screens/health.png" alt="Financial health" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='grid';" />
       <div class="ph-wide" style="display:none">Financial health — screenshot coming soon</div>
     </figure>
+  </div>
+  <div class="shots3d phones-row">
+    <div class="floatwrap floatwrap-b">
+      <figure class="device3d phone3d small">
+        <div class="notch"></div>
+        <img src="assets/screens/mobile-goals.jpg" alt="Goals (mobile)" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='grid';" />
+        <div class="ph-phone" style="display:none">Goals — coming soon</div>
+      </figure>
+    </div>
+    <div class="floatwrap">
+      <figure class="device3d phone3d small">
+        <div class="notch"></div>
+        <img src="assets/screens/mobile-savings.jpg" alt="Savings rule (mobile)" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='grid';" />
+        <div class="ph-phone" style="display:none">Savings — coming soon</div>
+      </figure>
+    </div>
+    <div class="floatwrap floatwrap-c">
+      <figure class="device3d phone3d small">
+        <div class="notch"></div>
+        <img src="assets/screens/mobile-bills.jpg" alt="Bills (mobile)" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='grid';" />
+        <div class="ph-phone" style="display:none">Bills — coming soon</div>
+      </figure>
+    </div>
   </div>
 </section>
 
