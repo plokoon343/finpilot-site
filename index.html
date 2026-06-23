@@ -9,243 +9,24 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
-<style>
-  :root{
-    --green:#00a862; --green-d:#008751; --mint:#38d39f;
-    --navy:#0b1326; --navy-2:#131d33;
-    --bg:#f4f9f6; --card:#fff; --text:#0b1326; --muted:#5b6b82; --border:#e4ece7;
-    --radius:18px; --shadow:0 14px 40px rgba(11,19,38,.10); --maxw:1140px;
-  }
-  *{box-sizing:border-box;margin:0;padding:0}
-  html{scroll-behavior:smooth}
-  body{font-family:'Josefin Sans',system-ui,sans-serif;color:var(--text);background:var(--bg);line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
-  h1,h2,h3,h4{font-weight:700;line-height:1.12;letter-spacing:.3px}
-  a{color:inherit;text-decoration:none}
-  svg{display:block}
-  .ic{width:1.25em;height:1.25em;stroke:currentColor;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round}
-  .grad{background:linear-gradient(120deg,var(--green),var(--mint));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
-  .eyebrow{display:inline-block;font-weight:700;font-size:.82rem;letter-spacing:.16em;text-transform:uppercase;color:var(--green-d);margin-bottom:14px}
-  .muted{color:var(--muted)}
-
-  /* Buttons */
-  .btn{display:inline-flex;align-items:center;gap:9px;font-family:inherit;font-weight:600;font-size:1rem;padding:13px 26px;border-radius:999px;cursor:pointer;border:2px solid transparent;transition:transform .15s,box-shadow .15s,background .15s,color .15s;white-space:nowrap}
-  .btn:hover{transform:translateY(-3px)}
-  .btn .ic{width:18px;height:18px}
-  .btn-primary{background:var(--green);color:#fff;box-shadow:0 10px 26px rgba(0,168,98,.34)}
-  .btn-primary:hover{background:var(--green-d)}
-  .btn-outline{background:transparent;color:var(--navy);border-color:var(--border)}
-  .btn-outline:hover{border-color:var(--green);color:var(--green-d)}
-  .btn-ghost{background:rgba(0,168,98,.1);color:var(--green-d)}
-  .btn-dark{background:var(--navy);color:#fff}
-
-  /* Nav */
-  .nav{position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:14px 6vw;background:rgba(244,249,246,.82);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
-  .brand{font-weight:700;font-size:1.4rem;color:var(--navy);display:flex;align-items:center;gap:8px}
-  .brand .logo{width:30px;height:30px;border-radius:9px;background:linear-gradient(135deg,var(--green),var(--mint));display:grid;place-items:center;color:#fff}
-  .brand .logo .ic{width:18px;height:18px}
-  .brand-accent{color:var(--green-d)}
-  .nav-links{display:flex;align-items:center;gap:28px;font-weight:600}
-  .nav-links a:not(.btn):hover{color:var(--green-d)}
-  .nav-toggle{display:none;background:none;border:none;cursor:pointer;color:var(--navy)}
-
-  /* Hero */
-  .hero{max-width:var(--maxw);margin:0 auto;padding:72px 6vw 64px;display:grid;grid-template-columns:1.1fr .9fr;gap:44px;align-items:center}
-  .hero h1{font-size:clamp(2.5rem,5.5vw,4rem)}
-  .lead{font-size:1.18rem;color:var(--muted);margin:20px 0 30px;max-width:34ch}
-  .hero-cta{display:flex;gap:14px;flex-wrap:wrap}
-  .hero-trust{margin-top:26px;display:flex;gap:14px;flex-wrap:wrap;color:var(--muted);font-size:.92rem;font-weight:600;align-items:center}
-  .hero-trust span{display:inline-flex;align-items:center;gap:6px}
-  .hero-trust .ic{width:16px;height:16px;color:var(--green-d)}
-  .hero-art{position:relative;display:flex;justify-content:center}
-  .hero-art .phone{width:100%;max-width:330px;filter:drop-shadow(var(--shadow));position:relative;z-index:2;animation:float 6s ease-in-out infinite}
-  .blob{position:absolute;border-radius:50%;filter:blur(10px);z-index:1;animation:pulse 7s ease-in-out infinite}
-  .blob-1{width:240px;height:240px;background:radial-gradient(circle,rgba(0,168,98,.30),transparent 70%);top:-16px;right:0}
-  .blob-2{width:190px;height:190px;background:radial-gradient(circle,rgba(56,211,159,.32),transparent 70%);bottom:-16px;left:0;animation-delay:1.5s}
-  @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-16px)}}
-  @keyframes pulse{0%,100%{transform:scale(1);opacity:.9}50%{transform:scale(1.12);opacity:.6}}
-
-  /* Sections */
-  .section{max-width:var(--maxw);margin:0 auto;padding:74px 6vw}
-  .section-head{text-align:center;margin-bottom:46px}
-  .section-head h2{font-size:clamp(1.9rem,3.6vw,2.6rem)}
-
-  /* Feature grid */
-  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
-  .card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:30px;transition:transform .2s,box-shadow .2s}
-  .card:hover{transform:translateY(-8px);box-shadow:var(--shadow)}
-  .card-ic{width:56px;height:56px;border-radius:15px;display:grid;place-items:center;background:rgba(0,168,98,.12);color:var(--green-d);margin-bottom:18px}
-  .card-ic .ic{width:26px;height:26px;stroke-width:1.8}
-  .card h3{font-size:1.25rem;margin-bottom:8px}
-  .card p{color:var(--muted);font-size:1rem}
-
-  /* Screenshots gallery (placeholders until real screens are dropped in) */
-  /* 3D device showcase */
-  .scene{perspective:1700px;display:flex;gap:48px;align-items:center;justify-content:center;max-width:var(--maxw);margin:0 auto;flex-wrap:wrap}
-  .device3d{transform-style:preserve-3d;transition:transform .7s cubic-bezier(.2,.7,.2,1);box-shadow:0 45px 90px rgba(0,0,0,.5)}
-  .device3d:hover{transform:rotateY(0) rotateX(0) scale(1.02)}
-  .browser3d{flex:1 1 420px;max-width:760px;border:1px solid var(--border);background:#0b1326;border-radius:14px;overflow:hidden;transform:rotateY(17deg) rotateX(6deg)}
-  .browser3d .browser{display:flex;gap:6px;align-items:center;padding:10px 14px;background:#0e1830;border-bottom:1px solid var(--border)}
-  .browser3d .browser span{width:11px;height:11px;border-radius:50%}
-  .browser3d .browser span:nth-child(1){background:#ff5f57}.browser3d .browser span:nth-child(2){background:#febc2e}.browser3d .browser span:nth-child(3){background:#28c840}
-  .browser3d .url{margin-left:10px;font-size:.72rem;color:#64748b;background:#0b1326;border-radius:20px;padding:4px 12px;flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-  .browser3d img{width:100%;display:block}
-  .browser3d.small{flex:0 1 430px}
-  .floatwrap{animation:bob 6.5s ease-in-out infinite}
-  @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-16px)}}
-  .phone3d{width:240px;border:9px solid #0e1830;border-radius:38px;background:#0e1830;overflow:hidden;transform:rotateY(-16deg) rotateX(6deg);position:relative}
-  .phone3d img{width:100%;display:block;border-radius:28px}
-  .phone3d .notch{position:absolute;top:10px;left:50%;transform:translateX(-50%);width:90px;height:18px;background:#0e1830;border-radius:0 0 14px 14px;z-index:2}
-  .ph-wide{aspect-ratio:16/10;display:grid;place-items:center;color:#7d8aa3;font-size:.95rem;text-align:center;padding:24px}
-  .ph-phone{aspect-ratio:9/19;display:grid;place-items:center;color:#7d8aa3;font-size:.82rem;text-align:center;padding:18px}
-  .shots3d{display:flex;gap:36px;justify-content:center;flex-wrap:wrap;margin-top:56px;perspective:1700px}
-  .phone3d.small{width:188px;border-width:7px;border-radius:32px}
-  .phone3d.small .notch{width:70px;height:14px}
-  .phones-row{margin-top:48px;align-items:center}
-  .floatwrap-b{animation-delay:-2.2s}
-  .floatwrap-c{animation-delay:-4.4s}
-  /* ===== Feature panels (PiggyVest-style) with realistic devices ===== */
-  .fpanel{padding:74px 6vw;overflow:hidden}
-  .fpanel .fp-in{max-width:var(--maxw);margin:0 auto;display:flex;gap:56px;align-items:center;justify-content:space-between;flex-wrap:wrap}
-  .fpanel.alt .fp-in{flex-direction:row-reverse}
-  .fp-copy{flex:1 1 340px;max-width:520px}
-  .fp-copy h3{font-size:2.5rem;line-height:1.1;margin:6px 0 16px;color:#fff;font-weight:700}
-  .fp-copy p{font-size:1.14rem;line-height:1.7;color:rgba(255,255,255,.85);max-width:440px}
-  .fp-copy .eyebrow{color:rgba(255,255,255,.85)}
-  .fp-device{flex:1 1 360px;display:flex;justify-content:center;align-items:center;min-height:440px;perspective:1700px}
-  .fpanel.g{background:linear-gradient(135deg,#0a7a4f,#055f3c)}
-  .fpanel.m{background:linear-gradient(135deg,#0e9f6e,#0a7a4f)}
-  .fpanel.d{background:linear-gradient(135deg,#16213e,#0b1326)}
-  /* realistic iPhone */
-  .iphone{position:relative;width:248px;border-radius:44px;background:linear-gradient(160deg,#1a2030,#05070d);padding:11px;box-shadow:0 40px 80px rgba(0,0,0,.45);transition:transform .6s cubic-bezier(.2,.7,.2,1)}
-  .iphone::before{content:'';position:absolute;right:-3px;top:130px;width:3px;height:64px;background:#2a3146;border-radius:3px}
-  .iphone::after{content:'';position:absolute;left:-3px;top:96px;width:3px;height:36px;background:#2a3146;border-radius:3px}
-  .iphone .scr{position:relative;border-radius:34px;overflow:hidden;background:#000}
-  .iphone .scr img{width:100%;display:block}
-  .iphone .island{position:absolute;top:14px;left:50%;transform:translateX(-50%);width:84px;height:24px;background:#000;border-radius:14px;z-index:4}
-  .iphone .glare{position:absolute;inset:0;border-radius:34px;background:linear-gradient(125deg,rgba(255,255,255,.16),rgba(255,255,255,0) 40%);pointer-events:none;z-index:3}
-  /* realistic laptop */
-  .laptop{position:relative;width:560px;max-width:100%;transition:transform .6s cubic-bezier(.2,.7,.2,1)}
-  .laptop .lid{background:linear-gradient(160deg,#1a2030,#05070d);border-radius:14px;padding:10px 10px 0;box-shadow:0 40px 80px rgba(0,0,0,.45)}
-  .laptop .lid .scr{border-radius:6px;overflow:hidden;background:#000;border:1px solid #2a3146}
-  .laptop .lid .scr img{width:100%;display:block}
-  .laptop .deck{height:14px;background:linear-gradient(#c7ccd6,#9aa1b0);border-radius:0 0 11px 11px;position:relative;margin:0 -18px}
-  .laptop .deck::after{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:96px;height:6px;background:#7d8595;border-radius:0 0 8px 8px}
-  .tiltR{transform:rotateY(-16deg) rotateX(5deg)}
-  .tiltL{transform:rotateY(16deg) rotateX(5deg)}
-  .fp-device .iphone:hover,.fp-device .laptop:hover{transform:rotateY(0) rotateX(0) scale(1.02)}
-  @media (max-width:760px){.fp-copy h3{font-size:2rem}.fp-device{min-height:380px}}
-  .shot{border-radius:24px;overflow:hidden;border:1px solid var(--border);background:var(--navy);aspect-ratio:9/16;position:relative;box-shadow:var(--shadow);transition:transform .25s}
-  .shot:hover{transform:translateY(-8px) rotate(-1deg)}
-  .shot img{width:100%;height:100%;object-fit:cover;display:block}
-  .shot .ph{position:absolute;inset:0;display:grid;place-items:center;text-align:center;color:#7d8aa3;font-size:.95rem;padding:20px;background:linear-gradient(160deg,#131d33,#0b1326)}
-  .shot .ph .ic{width:34px;height:34px;margin:0 auto 10px;color:var(--mint)}
-  /* In-app screen mockups */
-  .mock{position:absolute;inset:0;background:linear-gradient(160deg,#131d33,#0b1326);padding:16px 13px;display:flex;flex-direction:column;gap:9px;font-size:11px}
-  .mock .m-top{display:flex;justify-content:space-between;align-items:center;color:#94a3b8;font-size:10px}
-  .mock .m-title{color:#fff;font-weight:700;font-size:13px;margin:1px 0 5px}
-  .mock .m-balance{background:linear-gradient(135deg,#00a862,#008751);border-radius:13px;padding:13px}
-  .mock .m-balance .l{font-size:9px;color:rgba(255,255,255,.85)}
-  .mock .m-balance .v{font-size:19px;font-weight:800;color:#fff;margin-top:3px}
-  .mock .m-row{display:flex;gap:8px}
-  .mock .m-stat{flex:1;background:#172033;border-radius:10px;padding:9px}
-  .mock .m-stat .l{color:#94a3b8;font-size:9px}
-  .mock .m-stat .v{color:#fff;font-weight:700;font-size:12px;margin-top:3px}
-  .mock .m-chart{display:flex;align-items:flex-end;gap:5px;height:48px}
-  .mock .m-chart i{flex:1;background:linear-gradient(180deg,#2dd4a0,#008751);border-radius:3px 3px 0 0}
-  .mock .m-tx{display:flex;align-items:center;gap:8px;background:#172033;border-radius:9px;padding:7px 9px;color:#cbd5e1}
-  .mock .m-tx .grow{flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-  .mock .m-dot{width:18px;height:18px;border-radius:6px;background:#00a862;flex-shrink:0}
-  .mock .m-amt{color:#22c55e;font-weight:700}
-  .mock .m-amt.out{color:#ef4444}
-  .mock .m-cat{margin-bottom:2px}
-  .mock .m-label{display:flex;justify-content:space-between;color:#cbd5e1;font-size:10px;margin-bottom:4px}
-  .mock .m-prog{height:7px;border-radius:4px;background:#1e293b;overflow:hidden}
-  .mock .m-prog i{display:block;height:100%;background:linear-gradient(90deg,#00a862,#2dd4a0)}
-  .mock .m-up{border:1.5px dashed #2f3e57;border-radius:12px;padding:13px;text-align:center;color:#8595ad;font-size:10px}
-  .mock .m-check{width:17px;height:17px;border-radius:5px;background:#00a862;display:grid;place-items:center;flex-shrink:0}
-  /* Stats band */
-  .stats{display:flex;flex-wrap:wrap;gap:16px;justify-content:center;max-width:var(--maxw);margin:-10px auto 0;padding:0 6vw 30px}
-  .stat{flex:1;min-width:150px;text-align:center;background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:24px 16px;transition:transform .2s}
-  .stat:hover{transform:translateY(-6px)}
-  .stat .num{font-size:2.1rem;font-weight:800;color:var(--green-d);line-height:1}
-  .stat .lab{color:#5b6b82;font-size:.88rem;margin-top:7px}
-
-  /* How it works */
-  .how{background:var(--navy);color:#fff;padding:84px 6vw}
-  .how-inner{max-width:var(--maxw);margin:0 auto}
-  .how .section-head h2{color:#fff}
-  .how .eyebrow{color:var(--mint)}
-  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
-  .step{background:var(--navy-2);border:1px solid rgba(255,255,255,.08);border-radius:var(--radius);padding:30px}
-  .step-no{width:46px;height:46px;border-radius:50%;background:linear-gradient(135deg,var(--green),var(--mint));color:#fff;font-weight:700;display:grid;place-items:center;font-size:1.25rem;margin-bottom:18px}
-  .step h3{margin-bottom:8px}
-  .step p{color:#aebacb}
-
-  /* CTA band */
-  .cta-band{text-align:center;padding:96px 6vw;color:#fff;position:relative;overflow:hidden;
-    background:linear-gradient(120deg,rgba(0,135,81,.92),rgba(0,168,98,.88)),url('https://images.unsplash.com/photo-1579621970588-a35d0e7ab9b6?auto=format&fit=crop&w=1600&q=70') center/cover no-repeat;
-    background-color:var(--green-d)}
-
-  /* Lifestyle band (photo + copy) */
-  .life{display:grid;grid-template-columns:1fr 1fr;gap:0;max-width:none}
-  .life .life-img{min-height:380px;background:linear-gradient(135deg,#0b1326,#131d33),url('https://images.unsplash.com/photo-1601597111158-2fceff292cdc?auto=format&fit=crop&w=1000&q=70') center/cover no-repeat;background-blend-mode:overlay}
-  .life .life-copy{padding:60px 6vw;display:flex;flex-direction:column;justify-content:center}
-  .life .life-copy h2{font-size:clamp(1.7rem,3.4vw,2.4rem);margin-bottom:14px}
-  .life .life-copy p{color:var(--muted);font-size:1.08rem;margin-bottom:14px}
-  .life .life-list{list-style:none;display:flex;flex-direction:column;gap:12px;margin-top:8px}
-  .life .life-list li{display:flex;align-items:center;gap:10px;font-weight:600}
-  .life .life-list .ic{width:20px;height:20px;color:var(--green-d)}
-  @media (max-width:860px){.life{grid-template-columns:1fr}.life .life-img{min-height:240px}}
-  .cta-band h2{font-size:clamp(1.7rem,3.6vw,2.4rem);margin-bottom:26px}
-  .cta-band .hero-cta{justify-content:center}
-  .cta-band .btn-primary{background:#fff;color:var(--green-d);box-shadow:none}
-
-  /* FAQ */
-  .faq{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:12px}
-  .faq details{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:2px 22px;transition:box-shadow .2s}
-  .faq details[open]{box-shadow:var(--shadow)}
-  .faq summary{cursor:pointer;font-weight:600;font-size:1.08rem;padding:16px 0;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:14px}
-  .faq summary::-webkit-details-marker{display:none}
-  .faq summary .ic{width:20px;height:20px;color:var(--green-d);transition:transform .2s;flex-shrink:0}
-  .faq details[open] summary .ic{transform:rotate(45deg)}
-  .faq p{color:var(--muted);padding-bottom:18px}
-
-  /* Footer */
-  .footer{background:var(--navy);color:#cdd6e6;padding:58px 6vw 28px}
-  .footer-grid{max-width:var(--maxw);margin:0 auto;display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:30px}
-  .footer h4{color:#fff;margin-bottom:14px;font-size:1.05rem}
-  .footer a{display:flex;align-items:center;gap:8px;color:#aebacb;margin-bottom:11px}
-  .footer a:hover{color:var(--mint)}
-  .footer a .ic{width:16px;height:16px}
-  .footer .brand{color:#fff;margin-bottom:12px}
-  .footer-bottom{max-width:var(--maxw);margin:36px auto 0;padding-top:20px;border-top:1px solid rgba(255,255,255,.1);text-align:center;font-size:.9rem;color:#8595ad}
-
-  /* Scroll reveal */
-  .reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease}
-  .reveal.in{opacity:1;transform:none}
-  .reveal[data-d="1"]{transition-delay:.1s}.reveal[data-d="2"]{transition-delay:.2s}.reveal[data-d="3"]{transition-delay:.3s}
-
-  @media (max-width:860px){
-    .hero{grid-template-columns:1fr;text-align:center;padding-top:44px}
-    .lead{max-width:none;margin-inline:auto}.hero-cta,.hero-trust{justify-content:center}
-    .hero-art{order:-1}
-    .grid,.steps,.shots{grid-template-columns:1fr}
-    .shots{max-width:300px}
-    .footer-grid{grid-template-columns:1fr 1fr}
-    .nav-links{position:fixed;inset:62px 0 auto 0;flex-direction:column;gap:0;background:var(--bg);border-bottom:1px solid var(--border);padding:10px 6vw 20px;display:none}
-    .nav-links.open{display:flex}.nav-links a{padding:12px 0;width:100%}
-    .nav-toggle{display:block}
-  }
-  @media (max-width:520px){.footer-grid{grid-template-columns:1fr}}
-  @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
-</style>
+<link rel="stylesheet" href="assets/site.css" />
 </head>
 <body>
 <!-- NAV -->
 <header class="nav" id="top">
   <a href="#top" class="brand"><span class="logo"><svg class="ic" viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M7 14l4-4 3 3 5-6"/></svg></span><span class="wordmark">Auto<span class="brand-accent">monie</span></span></a>
   <nav class="nav-links" id="navLinks">
-    <a href="#features">Features</a>
+    <div class="has-drop">
+      <button class="drop-btn" aria-haspopup="true">Features <svg class="ic" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></button>
+      <div class="drop-menu">
+        <a href="features/transactions.html"><span class="di"><svg class="ic" viewBox="0 0 24 24"><path d="M7 7h11M7 7l3-3M7 7l3 3M17 17H6M17 17l-3-3M17 17l-3 3"/></svg></span><div>Transactions<small>Track &amp; import</small></div></a>
+        <a href="features/budgets.html"><span class="di"><svg class="ic" viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 9-9v9z"/></svg></span><div>Budgets<small>Limits &amp; alerts</small></div></a>
+        <a href="features/auto-savings.html"><span class="di"><svg class="ic" viewBox="0 0 24 24"><path d="M4 12a8 8 0 0 1 16 0v5H4z"/><circle cx="16" cy="11" r="1"/></svg></span><div>Auto-savings<small>Set &amp; forget</small></div></a>
+        <a href="features/goals.html"><span class="di"><svg class="ic" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/></svg></span><div>Goals<small>Save &amp; lock</small></div></a>
+        <a href="features/bills.html"><span class="di"><svg class="ic" viewBox="0 0 24 24"><path d="M6 3h12v18l-3-2-3 2-3-2-3 2zM9 8h6M9 12h6"/></svg></span><div>Bills &amp; debts<small>Never miss one</small></div></a>
+        <a href="features/insights.html"><span class="di"><svg class="ic" viewBox="0 0 24 24"><path d="M4 19V5M4 19h16M8 16v-5M12 16V8M16 16v-3"/></svg></span><div>Insights<small>Health &amp; trends</small></div></a>
+      </div>
+    </div>
     <a href="#how">How it works</a>
     <a href="#faq">FAQ</a>
     <a class="btn btn-ghost" data-app="web">Open web app</a>
@@ -261,7 +42,7 @@
     <p class="lead reveal" data-d="2">Budget smarter, import bank statements in seconds, hit your savings goals, and let auto-savings do the work. Automonie is your money cockpit — on web and Android.</p>
     <div class="hero-cta reveal" data-d="3">
       <a class="btn btn-primary" data-app="web">Open the web app <svg class="ic" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-      <a class="btn btn-outline" data-app="apk"><svg class="ic" viewBox="0 0 24 24"><path d="M12 3v12M7 11l5 5 5-5M5 21h14"/></svg> Download for Android</a>
+      <a class="store" data-app="apk"><svg class="ic" viewBox="0 0 24 24"><path d="M5 4l14 8-14 8z"/></svg><span><small>Download the</small><b>Android app</b></span></a>
     </div>
     <div class="hero-trust reveal" data-d="3">
       <span><svg class="ic" viewBox="0 0 24 24"><path d="M12 3l7 4v5c0 5-3.5 8-7 9-3.5-1-7-4-7-9V7z"/></svg> Bank-grade security</span>
@@ -270,23 +51,15 @@
     </div>
   </div>
   <div class="hero-art">
-    <svg class="phone" viewBox="0 0 320 380" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Automonie app preview">
-      <defs><linearGradient id="g1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#00a862"/><stop offset="1" stop-color="#008751"/></linearGradient></defs>
-      <rect x="40" y="20" width="240" height="340" rx="28" fill="#0b1326"/>
-      <rect x="52" y="40" width="216" height="300" rx="18" fill="#131d33"/>
-      <rect x="68" y="60" width="120" height="14" rx="7" fill="#94a3b8" opacity=".5"/>
-      <rect x="68" y="86" width="184" height="64" rx="14" fill="url(#g1)"/>
-      <rect x="84" y="104" width="70" height="10" rx="5" fill="#fff" opacity=".7"/>
-      <rect x="84" y="120" width="110" height="16" rx="8" fill="#fff"/>
-      <rect x="68" y="166" width="86" height="52" rx="12" fill="#1e293b"/>
-      <rect x="166" y="166" width="86" height="52" rx="12" fill="#1e293b"/>
-      <rect x="80" y="180" width="40" height="8" rx="4" fill="#22c55e"/>
-      <rect x="178" y="180" width="40" height="8" rx="4" fill="#ef4444"/>
-      <rect x="68" y="232" width="184" height="14" rx="7" fill="#94a3b8" opacity=".4"/>
-      <rect x="68" y="256" width="184" height="34" rx="10" fill="#1e293b"/>
-      <rect x="68" y="296" width="184" height="34" rx="10" fill="#1e293b"/>
-    </svg>
-    <div class="blob blob-1"></div><div class="blob blob-2"></div>
+    <svg class="deco flower" style="top:2%;right:4%" viewBox="0 0 100 100" aria-hidden="true"><g fill="currentColor"><circle cx="50" cy="18" r="17"/><circle cx="50" cy="82" r="17"/><circle cx="18" cy="50" r="17"/><circle cx="82" cy="50" r="17"/><circle cx="27" cy="27" r="17"/><circle cx="73" cy="27" r="17"/><circle cx="27" cy="73" r="17"/><circle cx="73" cy="73" r="17"/><circle cx="50" cy="50" r="23"/></g></svg>
+    <svg class="deco cross" style="bottom:6%;left:2%" viewBox="0 0 100 100" aria-hidden="true"><path fill="currentColor" d="M50 0C58 30 70 42 100 50 70 58 58 70 50 100 42 70 30 58 0 50 30 42 42 30 50 0Z"/></svg>
+    <div class="dvc tilt-l float" style="z-index:2">
+      <div class="scrn">
+        <div class="bar"><span class="t">9:41</span><span class="isl"></span><span class="bt"></span></div>
+        <img src="assets/screens/mobile-transactions.jpg" alt="Automonie transactions on Android" loading="eager" decoding="async">
+        <span class="glare"></span>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -298,75 +71,110 @@
   <div class="stat"><div class="num" data-count="6" data-suffix="+">0</div><div class="lab">Money tools in one place</div></div>
 </section>
 
-<!-- FEATURES -->
-<section class="section head-only" id="features">
-  <div class="section-head reveal"><span class="eyebrow">Everything in one place</span><h2>How each feature works</h2></div>
+<!-- FEATURES INTRO -->
+<section class="section" id="features" style="padding-bottom:18px">
+  <div class="section-head reveal"><span class="eyebrow">Everything in one place</span><h2>How each feature works</h2><p>Tap any feature to see it in detail — with real screens from the app.</p></div>
 </section>
 
 <!-- FEATURE PANELS -->
 <section class="fpanel g">
   <div class="fp-in">
     <div class="fp-copy reveal">
-      <span class="eyebrow">Import in seconds</span>
-      <h3>Statement import</h3>
-      <p>Upload a CSV, Excel, or PDF statement — even password-protected ones — and we categorise it automatically.</p>
+      <span class="eyebrow">Track &amp; import</span>
+      <h3>Transactions</h3>
+      <p>Log income and expenses, search and filter in a tap, and import a full bank statement — CSV, Excel, or PDF — that we categorise for you automatically.</p>
+      <a class="more" href="features/transactions.html">Explore transactions <svg class="ic" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
     </div>
-    <div class="fp-device"><div class="floatwrap"><div class="iphone tiltR"><div class="island"></div><div class="glare"></div><div class="scr"><img src="assets/screens/mobile-transactions.jpg" alt="Imported transactions on Automonie" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='grid';"><div class="ph-phone" style="display:none">Coming soon</div></div></div></div></div>
+    <div class="fp-device">
+      <svg class="deco flower" style="top:4%;left:4%" viewBox="0 0 100 100" aria-hidden="true"><g fill="currentColor"><circle cx="50" cy="18" r="17"/><circle cx="50" cy="82" r="17"/><circle cx="18" cy="50" r="17"/><circle cx="82" cy="50" r="17"/><circle cx="27" cy="27" r="17"/><circle cx="73" cy="27" r="17"/><circle cx="27" cy="73" r="17"/><circle cx="73" cy="73" r="17"/><circle cx="50" cy="50" r="23"/></g></svg>
+      <div class="dvc tilt-l float" style="z-index:2">
+        <div class="scrn"><div class="bar"><span class="t">9:41</span><span class="isl"></span><span class="bt"></span></div><img src="assets/screens/mobile-transactions.jpg" alt="Imported transactions on Automonie" loading="lazy"><span class="glare"></span></div>
+      </div>
+    </div>
   </div>
 </section>
 
 <section class="fpanel d alt">
   <div class="fp-in">
     <div class="fp-copy reveal">
-      <span class="eyebrow">Stay on budget</span>
+      <span class="eyebrow">Limits &amp; alerts</span>
       <h3>Smart budgets</h3>
-      <p>Set monthly limits per category and get an in-app alert before you overspend.</p>
+      <p>Set a monthly limit for any category — even your own custom ones — and get an in-app alert before you overspend.</p>
+      <a class="more" href="features/budgets.html">Explore budgets <svg class="ic" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
     </div>
-    <div class="fp-device"><div class="floatwrap floatwrap-b"><div class="laptop tiltL"><div class="lid"><div class="scr"><img src="assets/screens/budget.png" alt="Budget page on Automonie" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='grid';"><div class="ph-wide" style="display:none">Coming soon</div></div></div><div class="deck"></div></div></div></div>
+    <div class="fp-device">
+      <div class="bvc tilt-r float" style="z-index:2">
+        <div class="top"><i></i><i></i><i></i><span class="url">app.automonie.com/budget</span></div>
+        <img src="assets/screens/budget.png" alt="Budget page on Automonie" loading="lazy">
+      </div>
+    </div>
   </div>
 </section>
 
 <section class="fpanel m">
   <div class="fp-in">
     <div class="fp-copy reveal">
-      <span class="eyebrow">Save with intent</span>
+      <span class="eyebrow">Save &amp; lock</span>
       <h3>Goals</h3>
-      <p>Save toward what matters with progress tracking and contributions from your wallet. Lock a goal as a savings plan until its deadline.</p>
+      <p>Save toward what matters with live progress tracking. Lock a goal as a savings plan until its deadline and earn interest — break early only if you really must.</p>
+      <a class="more" href="features/goals.html">Explore goals <svg class="ic" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
     </div>
-    <div class="fp-device"><div class="floatwrap floatwrap-c"><div class="iphone tiltR"><div class="island"></div><div class="glare"></div><div class="scr"><img src="assets/screens/mobile-goals.jpg" alt="Goals on Automonie" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='grid';"><div class="ph-phone" style="display:none">Coming soon</div></div></div></div></div>
+    <div class="fp-device">
+      <svg class="deco cross" style="top:8%;right:5%" viewBox="0 0 100 100" aria-hidden="true"><path fill="currentColor" d="M50 0C58 30 70 42 100 50 70 58 58 70 50 100 42 70 30 58 0 50 30 42 42 30 50 0Z"/></svg>
+      <div class="dvc tilt-l float" style="z-index:2">
+        <div class="scrn"><div class="bar"><span class="t">9:41</span><span class="isl"></span><span class="bt"></span></div><img src="assets/screens/mobile-goals.jpg" alt="Goals on Automonie" loading="lazy"><span class="glare"></span></div>
+      </div>
+    </div>
   </div>
 </section>
 
 <section class="fpanel g alt">
   <div class="fp-in">
     <div class="fp-copy reveal">
-      <span class="eyebrow">Effortless saving</span>
+      <span class="eyebrow">Set &amp; forget</span>
       <h3>Auto-savings</h3>
-      <p>Fixed-amount or round-up rules quietly grow your savings every time you transact.</p>
+      <p>Choose a fixed amount or a round-up rule and Automonie quietly moves money into savings every time you transact. Link it to a goal and let it run.</p>
+      <a class="more" href="features/auto-savings.html">Explore auto-savings <svg class="ic" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
     </div>
-    <div class="fp-device"><div class="floatwrap"><div class="iphone tiltL"><div class="island"></div><div class="glare"></div><div class="scr"><img src="assets/screens/mobile-savings.jpg" alt="Savings rule on Automonie" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='grid';"><div class="ph-phone" style="display:none">Coming soon</div></div></div></div></div>
+    <div class="fp-device">
+      <div class="dvc tilt-r float" style="z-index:2">
+        <div class="scrn"><div class="bar"><span class="t">9:41</span><span class="isl"></span><span class="bt"></span></div><img src="assets/screens/mobile-savings.jpg" alt="Savings rule on Automonie" loading="lazy"><span class="glare"></span></div>
+      </div>
+    </div>
   </div>
 </section>
 
 <section class="fpanel d">
   <div class="fp-in">
     <div class="fp-copy reveal">
-      <span class="eyebrow">Your money, in motion</span>
-      <h3>Wallet</h3>
-      <p>Deposit, withdraw to any account, and see every movement at a glance.</p>
+      <span class="eyebrow">Never miss one</span>
+      <h3>Bills &amp; debts</h3>
+      <p>Keep every recurring bill and debt in one place, see what's due, and pay selected items straight from your wallet or a linked bank account.</p>
+      <a class="more" href="features/bills.html">Explore bills &amp; debts <svg class="ic" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
     </div>
-    <div class="fp-device"><div class="floatwrap floatwrap-b"><div class="iphone tiltR"><div class="island"></div><div class="glare"></div><div class="scr"><div class="ph-phone">Wallet — screenshot coming soon</div></div></div></div></div>
+    <div class="fp-device">
+      <svg class="deco flower" style="bottom:6%;right:4%" viewBox="0 0 100 100" aria-hidden="true"><g fill="currentColor"><circle cx="50" cy="18" r="17"/><circle cx="50" cy="82" r="17"/><circle cx="18" cy="50" r="17"/><circle cx="82" cy="50" r="17"/><circle cx="27" cy="27" r="17"/><circle cx="73" cy="27" r="17"/><circle cx="27" cy="73" r="17"/><circle cx="73" cy="73" r="17"/><circle cx="50" cy="50" r="23"/></g></svg>
+      <div class="dvc tilt-l float" style="z-index:2">
+        <div class="scrn"><div class="bar"><span class="t">9:41</span><span class="isl"></span><span class="bt"></span></div><img src="assets/screens/mobile-bills.jpg" alt="Bills and obligations on Automonie" loading="lazy"><span class="glare"></span></div>
+      </div>
+    </div>
   </div>
 </section>
 
 <section class="fpanel m alt">
   <div class="fp-in">
     <div class="fp-copy reveal">
-      <span class="eyebrow">Know where it goes</span>
+      <span class="eyebrow">Health &amp; trends</span>
       <h3>Insights</h3>
-      <p>Net worth, spending ratios, and trends that tell you exactly where your money goes.</p>
+      <p>A financial-health score, income-vs-expense charts, spending breakdowns and cashflow trends that show you exactly where your money goes.</p>
+      <a class="more" href="features/insights.html">Explore insights <svg class="ic" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
     </div>
-    <div class="fp-device"><div class="floatwrap floatwrap-c"><div class="laptop tiltL"><div class="lid"><div class="scr"><img src="assets/screens/health.png" alt="Financial health insights on Automonie" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='grid';"><div class="ph-wide" style="display:none">Coming soon</div></div></div><div class="deck"></div></div></div></div>
+    <div class="fp-device">
+      <div class="bvc tilt-r float" style="z-index:2">
+        <div class="top"><i></i><i></i><i></i><span class="url">app.automonie.com/health</span></div>
+        <img src="assets/screens/health.png" alt="Financial health insights on Automonie" loading="lazy">
+      </div>
+    </div>
   </div>
 </section>
 
@@ -425,30 +233,17 @@
       <div class="brand"><span class="logo"><svg class="ic" viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M7 14l4-4 3 3 5-6"/></svg></span><span class="wordmark">Auto<span class="brand-accent" style="color:var(--mint)">monie</span></span></div>
       <p class="muted">Your personal finance cockpit. Budget, import, save, and grow — on web and Android.</p>
     </div>
-    <div><h4>Product</h4><a href="#features">Features</a><a href="#how">How it works</a><a href="#faq">FAQ</a></div>
-    <div><h4>Get the app</h4><a data-app="web">Web app</a><a data-app="apk">Android (APK)</a></div>
+    <div><h4>Features</h4><a href="features/transactions.html">Transactions</a><a href="features/budgets.html">Budgets</a><a href="features/auto-savings.html">Auto-savings</a><a href="features/goals.html">Goals</a></div>
+    <div><h4>More</h4><a href="features/bills.html">Bills &amp; debts</a><a href="features/insights.html">Insights</a><a href="#how">How it works</a><a href="#faq">FAQ</a></div>
     <div><h4>Contact</h4>
-      <a href="mailto:onukogudumebi@gmail.com"><svg class="ic" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg> onukogudumebi@gmail.com</a>
+      <a href="mailto:superadmin@automonie.com"><svg class="ic" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg> superadmin@automonie.com</a>
+      <a data-app="web"><svg class="ic" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg> Open web app</a>
+      <a data-app="apk"><svg class="ic" viewBox="0 0 24 24"><path d="M12 3v12M7 11l5 5 5-5M5 21h14"/></svg> Android (APK)</a>
     </div>
   </div>
   <div class="footer-bottom">© <span id="year"></span> Automonie. All rights reserved.</div>
 </footer>
 
-<script>
-  // App links — update apk after each Android build.
-  var LINKS={web:'https://financial-app-fawn-nu.vercel.app',apk:'https://expo.dev/artifacts/eas/8sJs7jJCR7FHs1cKig3cFT.apk'};
-  document.querySelectorAll('[data-app]').forEach(function(el){var t=LINKS[el.getAttribute('data-app')];if(t){el.href=t;el.target='_blank';el.rel='noopener';}});
-  // Mobile nav
-  var tg=document.getElementById('navToggle'),lk=document.getElementById('navLinks');
-  if(tg&&lk){tg.addEventListener('click',function(){lk.classList.toggle('open')});lk.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){lk.classList.remove('open')})});}
-  // Year
-  var y=document.getElementById('year');if(y)y.textContent=new Date().getFullYear();
-  // Scroll reveal
-  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}})},{threshold:.15});
-  document.querySelectorAll('.reveal').forEach(function(el){io.observe(el)});
-  // Count-up stats
-  var cu=new IntersectionObserver(function(es){es.forEach(function(e){if(!e.isIntersecting)return;var el=e.target,end=+el.getAttribute('data-count'),suf=el.getAttribute('data-suffix')||'',t0=null;function step(ts){if(!t0)t0=ts;var p=Math.min((ts-t0)/1100,1);el.textContent=Math.round(p*end)+suf;if(p<1)requestAnimationFrame(step);}requestAnimationFrame(step);cu.unobserve(el);})},{threshold:.6});
-  document.querySelectorAll('.num[data-count]').forEach(function(el){cu.observe(el)});
-</script>
+<script src="assets/site.js"></script>
 </body>
 </html>
