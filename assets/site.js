@@ -3,7 +3,7 @@
   // App links — update apk after each Android build.
   var LINKS = {
     web: 'https://financial-app-fawn-nu.vercel.app',
-    apk: 'https://expo.dev/artifacts/eas/8sJs7jJCR7FHs1cKig3cFT.apk'
+    apk: 'https://expo.dev/artifacts/eas/QnxzaMZGM3GWaEtjYT_GoWepWhJNpcin6oViz2o5dco.apk'
   };
   document.querySelectorAll('[data-app]').forEach(function (el) {
     var t = LINKS[el.getAttribute('data-app')];
