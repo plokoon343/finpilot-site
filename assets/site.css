@@ -305,3 +305,76 @@ a.card{display:block}
   background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);transition:all .2s ease}
 .social a:hover{background:var(--green);border-color:var(--green);transform:translateY(-2px)}
 .social .ic{width:19px;height:19px;color:#fff}
+
+/* ============================================================
+   VISUAL LAYER — illustrations, dividers, animated icons
+   ============================================================ */
+
+/* --- Wave / curve dividers between sections --- */
+.divider{display:block;width:100%;height:auto;line-height:0;margin:0;padding:0}
+.divider svg{display:block;width:100%;height:70px}
+.divider.flip svg{transform:rotate(180deg)}
+@media(max-width:700px){.divider svg{height:44px}}
+
+/* --- Animated SVG line drawing --- */
+@keyframes draw{to{stroke-dashoffset:0}}
+.draw path,.draw circle,.draw rect,.draw line,.draw polyline{
+  stroke-dasharray:var(--len,300);stroke-dashoffset:var(--len,300);
+  animation:draw 1.6s ease forwards}
+.draw.d2 path{animation-delay:.25s}
+.draw.d3 path{animation-delay:.5s}
+
+/* --- Icon micro-animations --- */
+@keyframes pulseSoft{0%,100%{transform:scale(1)}50%{transform:scale(1.09)}}
+@keyframes bobY{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+@keyframes spinSlow{to{transform:rotate(360deg)}}
+@keyframes sheen{0%{background-position:-180% 0}100%{background-position:180% 0}}
+.card:hover .card-ic{animation:pulseSoft .7s ease}
+.card-ic{transition:background .3s ease,transform .3s ease}
+.card:hover .card-ic{background:linear-gradient(135deg,var(--green),var(--mint));transform:rotate(-6deg)}
+.card:hover .card-ic .ic{color:#fff}
+.ic-bob{animation:bobY 3.4s ease-in-out infinite}
+.ic-spin{animation:spinSlow 14s linear infinite;transform-origin:50% 50%}
+
+/* --- Illustrated benefit band --- */
+.illus{padding:76px 20px;background:
+   radial-gradient(900px 300px at 12% 0%,rgba(0,168,98,.10),transparent 60%),
+   radial-gradient(800px 320px at 88% 100%,rgba(56,211,159,.12),transparent 60%),
+   var(--bg)}
+.illus-in{max-width:var(--maxw);margin:0 auto}
+.illus-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:22px;margin-top:38px}
+.ill{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);
+  padding:26px 22px;text-align:center;transition:transform .3s ease,box-shadow .3s ease}
+.ill:hover{transform:translateY(-6px);box-shadow:var(--shadow)}
+.ill-art{width:86px;height:86px;margin:0 auto 16px;display:grid;place-items:center;
+  border-radius:24px;background:linear-gradient(135deg,rgba(0,168,98,.12),rgba(56,211,159,.20))}
+.ill-art svg{width:46px;height:46px;color:var(--green-d);overflow:visible}
+.ill h3{font-size:1.06rem;margin-bottom:7px}
+.ill p{color:var(--muted);font-size:.93rem;line-height:1.65}
+
+/* --- Animated stat ring --- */
+.ring-wrap{display:flex;gap:26px;flex-wrap:wrap;justify-content:center;margin-top:34px}
+.ring{position:relative;width:120px;height:120px;display:grid;place-items:center;text-align:center}
+.ring svg{position:absolute;inset:0;width:120px;height:120px;transform:rotate(-90deg)}
+.ring .track{fill:none;stroke:var(--border);stroke-width:9}
+.ring .bar{fill:none;stroke:url(#ringGrad);stroke-width:9;stroke-linecap:round;
+  stroke-dasharray:327;stroke-dashoffset:327;transition:stroke-dashoffset 1.4s cubic-bezier(.4,0,.2,1)}
+.ring.on .bar{stroke-dashoffset:var(--off,90)}
+.ring b{font-size:1.35rem;color:var(--navy);position:relative;z-index:1}
+.ring small{display:block;color:var(--muted);font-size:.72rem;font-weight:600;margin-top:2px}
+
+/* --- Decorative floating blobs (scoped, non-intrusive) --- */
+.blob-set{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:0}
+.blob-set i{position:absolute;border-radius:50%;filter:blur(38px);opacity:.30}
+.blob-set i:nth-child(1){width:230px;height:230px;background:var(--green);top:-60px;left:-50px;animation:bobY 9s ease-in-out infinite}
+.blob-set i:nth-child(2){width:190px;height:190px;background:var(--mint);bottom:-50px;right:-40px;animation:bobY 11s ease-in-out infinite reverse}
+
+/* --- Shimmer accent on eyebrows --- */
+.eyebrow.shine{background:linear-gradient(90deg,var(--green-d),var(--mint),var(--green-d));
+  background-size:220% 100%;-webkit-background-clip:text;background-clip:text;
+  -webkit-text-fill-color:transparent;animation:sheen 4.5s linear infinite}
+
+@media (prefers-reduced-motion:reduce){
+  .ic-bob,.ic-spin,.blob-set i,.eyebrow.shine{animation:none}
+  .draw path,.draw circle,.draw rect,.draw line,.draw polyline{stroke-dashoffset:0;animation:none}
+}
