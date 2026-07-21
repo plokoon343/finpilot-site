@@ -1,9 +1,11 @@
 // ===== Automonie marketing site — shared scripts =====
 (function () {
-  // App links — update apk after each Android build.
+  // App links — UPDATE `apk` AFTER EVERY ANDROID BUILD.
+  // Get the current URL with:  npx eas build:list --platform android --limit 1
+  // (look for "Application Archive URL"). Last updated: build d4dc669d, 2026-07-15.
   var LINKS = {
-    web: 'https://financial-app-fawn-nu.vercel.app',
-    apk: 'https://expo.dev/artifacts/eas/QnxzaMZGM3GWaEtjYT_GoWepWhJNpcin6oViz2o5dco.apk'
+    web: 'https://app.automonie.com',
+    apk: 'https://expo.dev/artifacts/eas/Qbl3KTE3-vga3C64E62DAvkxGwAg0x1GHA-YZZCF7ms.apk'
   };
   document.querySelectorAll('[data-app]').forEach(function (el) {
     var t = LINKS[el.getAttribute('data-app')];
