@@ -1,4 +1,4 @@
-/* ===== Automonie marketing site — shared styles ===== */
+/* ===== Automonie marketing site, shared styles ===== */
 :root{
   --green:#00a862; --green-d:#008751; --mint:#38d39f;
   --navy:#0b1326; --navy-2:#131d33;
@@ -175,7 +175,7 @@ a.card{display:block}
 
 /* Lifestyle band */
 .life{display:grid;grid-template-columns:1fr 1fr;gap:0;max-width:none}
-.life .life-img{min-height:380px;background:linear-gradient(135deg,#0b1326,#131d33),url('https://images.unsplash.com/photo-1601597111158-2fceff292cdc?auto=format&fit=crop&w=1000&q=70') center/cover no-repeat;background-blend-mode:overlay}
+.life .life-img{min-height:380px;background:linear-gradient(135deg,#0b1326,#131d33),url('https://images.unsplash.com/photo-1687422808424-4a8e78fa6ae8?auto=format&fit=crop&w=1000&q=70') center/cover no-repeat;background-blend-mode:overlay}
 .life .life-copy{padding:60px 6vw;display:flex;flex-direction:column;justify-content:center}
 .life .life-copy h2{font-size:clamp(1.7rem,3.4vw,2.4rem);margin-bottom:14px}
 .life .life-copy p{color:var(--muted);font-size:1.08rem;margin-bottom:14px}
@@ -378,3 +378,15 @@ a.card{display:block}
   .ic-bob,.ic-spin,.blob-set i,.eyebrow.shine{animation:none}
   .draw path,.draw circle,.draw rect,.draw line,.draw polyline{stroke-dashoffset:0;animation:none}
 }
+
+/* ===== Real-photo band ===== */
+.people{padding:78px 20px;background:var(--card);border-top:1px solid var(--border)}
+.people-in{max-width:var(--maxw);margin:0 auto}
+.photo-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px;margin-top:36px}
+.pcard{position:relative;border-radius:var(--radius);overflow:hidden;min-height:320px;box-shadow:var(--shadow);isolation:isolate;transition:transform .35s ease}
+.pcard:hover{transform:translateY(-6px)}
+.pcard img{width:100%;height:100%;min-height:320px;object-fit:cover;display:block;transition:transform .7s cubic-bezier(.2,.7,.2,1)}
+.pcard:hover img{transform:scale(1.06)}
+.pcard figcaption{position:absolute;inset:auto 0 0 0;padding:22px 20px 20px;background:linear-gradient(to top,rgba(11,19,38,.92),rgba(11,19,38,.55) 55%,transparent);color:#fff}
+.pcard figcaption b{display:block;font-size:1.06rem;margin-bottom:4px}
+.pcard figcaption span{font-size:.9rem;color:rgba(255,255,255,.8);line-height:1.55}
