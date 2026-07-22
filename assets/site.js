@@ -31,6 +31,15 @@
   }, { threshold: .15 });
   document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
 
+  // Safety net: if the observer never fires at all (unsupported browser, or a
+  // renderer that does not run IntersectionObserver), reveal everything rather
+  // than leaving the page blank.
+  setTimeout(function () {
+    if (!document.querySelector('.reveal.in')) {
+      document.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('in'); });
+    }
+  }, 3000);
+
   // Count-up stats
   var cu = new IntersectionObserver(function (es) {
     es.forEach(function (e) {
