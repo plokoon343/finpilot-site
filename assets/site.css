@@ -175,7 +175,7 @@ a.card{display:block}
 
 /* Lifestyle band */
 .life{display:grid;grid-template-columns:1fr 1fr;gap:0;max-width:none}
-.life .life-img{min-height:380px;background:linear-gradient(135deg,#0b1326,#131d33),url('https://images.unsplash.com/photo-1687422808424-4a8e78fa6ae8?auto=format&fit=crop&w=1000&q=70') center/cover no-repeat;background-blend-mode:overlay}
+.life .life-img{min-height:380px;background:url('https://images.unsplash.com/photo-1615891081220-9116de3e1afd?auto=format&fit=crop&w=1100&q=75') center/cover no-repeat;position:relative}
 .life .life-copy{padding:60px 6vw;display:flex;flex-direction:column;justify-content:center}
 .life .life-copy h2{font-size:clamp(1.7rem,3.4vw,2.4rem);margin-bottom:14px}
 .life .life-copy p{color:var(--muted);font-size:1.08rem;margin-bottom:14px}
@@ -394,3 +394,56 @@ a.card{display:block}
 .pcard figcaption{position:absolute;inset:auto 0 0 0;padding:22px 20px 20px;background:linear-gradient(to top,rgba(11,19,38,.92),rgba(11,19,38,.55) 55%,transparent);color:#fff}
 .pcard figcaption b{display:block;font-size:1.06rem;margin-bottom:4px}
 .pcard figcaption span{font-size:.9rem;color:rgba(255,255,255,.8);line-height:1.55}
+
+/* ============================================================
+   CARTOONY SCENES: playful animated SVG illustrations
+   ============================================================ */
+@keyframes coinDrop{0%{transform:translateY(-34px) rotate(-18deg);opacity:0}
+  55%{opacity:1}70%{transform:translateY(3px) rotate(4deg)}85%{transform:translateY(-3px)}100%{transform:translateY(0) rotate(0);opacity:1}}
+@keyframes wiggle{0%,100%{transform:rotate(-3deg)}50%{transform:rotate(3deg)}}
+@keyframes popIn{0%{transform:scale(0);opacity:0}70%{transform:scale(1.18)}100%{transform:scale(1);opacity:1}}
+@keyframes growBar{0%{transform:scaleY(0)}70%{transform:scaleY(1.12)}100%{transform:scaleY(1)}}
+@keyframes swing{0%,100%{transform:rotate(-7deg)}50%{transform:rotate(7deg)}}
+@keyframes blink{0%,92%,100%{transform:scaleY(1)}96%{transform:scaleY(.1)}}
+@keyframes driftX{0%,100%{transform:translateX(0)}50%{transform:translateX(9px)}}
+
+.scene{width:100%;max-width:340px;height:auto;overflow:visible}
+.scene .coin{animation:coinDrop 1.5s cubic-bezier(.3,1.4,.5,1) infinite}
+.scene .coin.c2{animation-delay:.45s}
+.scene .coin.c3{animation-delay:.9s}
+.scene .pop{animation:popIn .8s cubic-bezier(.3,1.6,.5,1) both}
+.scene .pop.p2{animation-delay:.2s}.scene .pop.p3{animation-delay:.4s}.scene .pop.p4{animation-delay:.6s}
+.scene .wig{animation:wiggle 2.6s ease-in-out infinite;transform-origin:center}
+.scene .bar-g{animation:growBar 1.3s cubic-bezier(.3,1.4,.5,1) both;transform-origin:bottom}
+.scene .bar-g.b2{animation-delay:.15s}.scene .bar-g.b3{animation-delay:.3s}.scene .bar-g.b4{animation-delay:.45s}
+.scene .swing{animation:swing 3s ease-in-out infinite;transform-origin:top center}
+.scene .eye{animation:blink 4s infinite;transform-origin:center}
+.scene .drift{animation:driftX 4s ease-in-out infinite}
+.scene .bob{animation:bobY 3s ease-in-out infinite}
+
+/* Scene stage: soft playful backdrop */
+.stage{position:relative;display:grid;place-items:center;padding:30px 18px;
+  border-radius:26px;background:linear-gradient(140deg,rgba(0,168,98,.10),rgba(56,211,159,.18));
+  border:1px solid var(--border);overflow:hidden}
+.stage::before,.stage::after{content:'';position:absolute;border-radius:50%;filter:blur(30px);opacity:.5}
+.stage::before{width:150px;height:150px;background:rgba(0,168,98,.30);top:-40px;left:-30px}
+.stage::after{width:120px;height:120px;background:rgba(56,211,159,.32);bottom:-34px;right:-24px}
+.stage .scene{position:relative;z-index:1}
+
+/* ===== Photo + copy split band (feature pages) ===== */
+.psplit{display:grid;grid-template-columns:1fr 1fr;align-items:stretch;
+  max-width:var(--maxw);margin:0 auto;border-radius:var(--radius);overflow:hidden;
+  box-shadow:var(--shadow);background:var(--card)}
+.psplit .ph{min-height:340px;background-size:cover;background-position:center}
+.psplit .cp{padding:44px 40px;display:flex;flex-direction:column;justify-content:center}
+.psplit .cp h2{font-size:clamp(1.55rem,3vw,2.15rem);margin-bottom:12px}
+.psplit .cp p{color:var(--muted);font-size:1.03rem;margin-bottom:16px}
+.psplit .cp ul{list-style:none;display:flex;flex-direction:column;gap:11px}
+.psplit .cp li{display:flex;align-items:flex-start;gap:10px;font-weight:600;line-height:1.5}
+.psplit .cp li .ic{width:19px;height:19px;color:var(--green-d);flex-shrink:0;margin-top:3px}
+.psplit-wrap{padding:60px 20px}
+@media(max-width:860px){.psplit{grid-template-columns:1fr}.psplit .ph{min-height:230px}.psplit .cp{padding:32px 24px}}
+
+@media (prefers-reduced-motion:reduce){
+  .scene *{animation:none!important}
+}
