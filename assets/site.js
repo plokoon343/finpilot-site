@@ -40,6 +40,99 @@
     }
   }, 3000);
 
+  // ===== Interactive scenes =====
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var stages = [].slice.call(document.querySelectorAll('.stage'));
+
+  // 1) Play when scrolled into view; keep playing on hover.
+  if (stages.length && 'IntersectionObserver' in window) {
+    var sio = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { e.target.classList.toggle('live', e.isIntersecting); });
+    }, { threshold: .35 });
+    stages.forEach(function (s) { sio.observe(s); });
+  } else {
+    stages.forEach(function (s) { s.classList.add('live'); });
+  }
+
+  // 2) Cursor parallax: tilt the scene toward the pointer.
+  if (!reduce) {
+    stages.forEach(function (s) {
+      var scene = s.querySelector('.scene');
+      if (!scene) return;
+      s.addEventListener('mousemove', function (ev) {
+        var r = s.getBoundingClientRect();
+        var dx = (ev.clientX - r.left) / r.width - .5;
+        var dy = (ev.clientY - r.top) / r.height - .5;
+        scene.style.setProperty('--ry', (dx * 16).toFixed(2) + 'deg');
+        scene.style.setProperty('--rx', (-dy * 12).toFixed(2) + 'deg');
+      });
+      s.addEventListener('mouseleave', function () {
+        scene.style.setProperty('--ry', '0deg');
+        scene.style.setProperty('--rx', '0deg');
+      });
+      // Touch: tap replays the animation.
+      s.addEventListener('click', function () {
+        s.classList.remove('live');
+        void s.offsetWidth;
+        s.classList.add('live');
+      });
+    });
+  }
+
+  // 3) Scroll-driven scrub: set --p (0..1) as the element crosses the viewport.
+  var scrubs = [].slice.call(document.querySelectorAll('[data-scrub]'));
+  if (scrubs.length && !reduce) {
+    var tick = function () {
+      var vh = window.innerHeight || 800;
+      scrubs.forEach(function (el) {
+        var r = el.getBoundingClientRect();
+        var p = 1 - (r.top - vh * .25) / (vh * .6);
+        p = Math.max(0, Math.min(1, p));
+        el.style.setProperty('--p', p.toFixed(3));
+      });
+    };
+    var queued = false;
+    window.addEventListener('scroll', function () {
+      if (queued) return;
+      queued = true;
+      requestAnimationFrame(function () { tick(); queued = false; });
+    }, { passive: true });
+    window.addEventListener('resize', tick);
+    tick();
+  } else {
+    scrubs.forEach(function (el) { el.style.setProperty('--p', '1'); });
+  }
+
+  // 4) Live hero phone: count the balance up and slide rows in when visible.
+  var phone = document.querySelector('.uiphone');
+  if (phone) {
+    var balEl = phone.querySelector('[data-count-to]');
+    var played = false;
+    var run = function () {
+      if (played) return;
+      played = true;
+      phone.classList.add('play');
+      if (!balEl || reduce) { if (balEl) balEl.textContent = balEl.getAttribute('data-final'); return; }
+      var end = +balEl.getAttribute('data-count-to'), t0 = null;
+      var fmt = function (n) { return '₦' + Math.round(n).toLocaleString('en-NG'); };
+      var step = function (ts) {
+        if (!t0) t0 = ts;
+        var k = Math.min((ts - t0) / 1400, 1);
+        var eased = 1 - Math.pow(1 - k, 3);
+        balEl.textContent = fmt(end * eased);
+        if (k < 1) requestAnimationFrame(step);
+      };
+      requestAnimationFrame(step);
+    };
+    if ('IntersectionObserver' in window) {
+      var pio = new IntersectionObserver(function (es) {
+        es.forEach(function (e) { if (e.isIntersecting) { run(); pio.disconnect(); } });
+      }, { threshold: .3 });
+      pio.observe(phone);
+      setTimeout(run, 2500); // fallback if the observer never fires
+    } else { run(); }
+  }
+
   // Count-up stats
   var cu = new IntersectionObserver(function (es) {
     es.forEach(function (e) {
