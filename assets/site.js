@@ -2,10 +2,10 @@
 (function () {
   // App links: UPDATE `apk` AFTER EVERY ANDROID BUILD.
   // Get the current URL with:  npx eas build:list --platform android --limit 1
-  // (look for "Application Archive URL"). Last updated: build c8ca10a1, 2026-07-31.
+  // (look for "Application Archive URL"). Last updated: build 66c7e1a7, 2026-08-04.
   var LINKS = {
     web: 'https://app.automonie.com',
-    apk: 'https://expo.dev/artifacts/eas/8OGFlTyBqIgnIsiRhgfOoI7APteuEgT0RNJGFFR6zwM.apk'
+    apk: 'https://expo.dev/artifacts/eas/UCRP0iN93yrzjAATxxpuRK-bSt3vQMzNpICLT5sU91w.apk'
   };
   document.querySelectorAll('[data-app]').forEach(function (el) {
     var t = LINKS[el.getAttribute('data-app')];
