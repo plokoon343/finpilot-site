@@ -146,10 +146,10 @@ a.card{display:block}
 .fp-copy .more:hover{gap:13px;border-color:#fff}
 .fp-copy .more .ic{width:18px;height:18px}
 .fp-device{flex:1 1 360px;position:relative;display:flex;justify-content:center;align-items:center;min-height:520px;perspective:1600px}
-.fpanel.g{background:linear-gradient(135deg,#0a7a4f,#055f3c)}
-.fpanel.m{background:linear-gradient(135deg,#0e9f6e,#0a7a4f)}
-.fpanel.d{background:linear-gradient(135deg,#16213e,#0b1326)}
-.fpanel.blue{background:linear-gradient(135deg,#1f44d6,#1230a6)}
+.fpanel.g{background:linear-gradient(135deg,rgba(10,122,79,.74),rgba(5,95,60,.84)),url("texture.png") repeat,#075f3c;background-size:auto,300px 300px,auto}
+.fpanel.m{background:linear-gradient(135deg,rgba(14,159,110,.74),rgba(10,122,79,.84)),url("texture.png") repeat,#0a7a4f;background-size:auto,300px 300px,auto}
+.fpanel.d{background:linear-gradient(135deg,rgba(22,33,62,.72),rgba(11,19,38,.82)),url("texture.png") repeat,#0b1326;background-size:auto,300px 300px,auto}
+.fpanel.blue{background:linear-gradient(135deg,rgba(31,68,214,.74),rgba(18,48,166,.84)),url("texture.png") repeat,#1230a6;background-size:auto,300px 300px,auto}
 @media (max-width:760px){.fp-device{min-height:430px}}
 
 /* Stats band */
@@ -220,10 +220,10 @@ a.card{display:block}
 
 /* ===== Feature page hero ===== */
 .fhero{position:relative;overflow:hidden;color:#fff;padding:60px 6vw 78px}
-.fhero.g{background:linear-gradient(135deg,#0a7a4f,#055f3c)}
-.fhero.m{background:linear-gradient(135deg,#0e9f6e,#0a7a4f)}
-.fhero.d{background:linear-gradient(135deg,#16213e,#0b1326)}
-.fhero.blue{background:linear-gradient(135deg,#1f44d6,#1230a6)}
+.fhero.g{background:linear-gradient(135deg,rgba(10,122,79,.74),rgba(5,95,60,.84)),url("texture.png") repeat,#075f3c;background-size:auto,300px 300px,auto}
+.fhero.m{background:linear-gradient(135deg,rgba(14,159,110,.74),rgba(10,122,79,.84)),url("texture.png") repeat,#0a7a4f;background-size:auto,300px 300px,auto}
+.fhero.d{background:linear-gradient(135deg,rgba(22,33,62,.72),rgba(11,19,38,.82)),url("texture.png") repeat,#0b1326;background-size:auto,300px 300px,auto}
+.fhero.blue{background:linear-gradient(135deg,rgba(31,68,214,.74),rgba(18,48,166,.84)),url("texture.png") repeat,#1230a6;background-size:auto,300px 300px,auto}
 .fhero-in{max-width:var(--maxw);margin:0 auto;display:flex;gap:60px;align-items:center;justify-content:space-between;flex-wrap:wrap}
 .fhero-copy{flex:1 1 360px;max-width:540px}
 .fhero-copy h1{font-size:clamp(2.4rem,5vw,3.6rem);margin:8px 0 18px}
