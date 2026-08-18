@@ -5,6 +5,8 @@
   // (look for "Application Archive URL"). Last updated: build e88b438e, 2026-08-15.
   var LINKS = {
     web: 'https://app.automonie.com',
+    // iPhone = the installable PWA (open in Safari → Add to Home Screen).
+    ios: 'https://app.automonie.com',
     apk: 'https://expo.dev/artifacts/eas/r2mnNQnyJ3Gpi9y_9QarqtmRBqZSypV6om-yYm7hDdQ.apk'
   };
   document.querySelectorAll('[data-app]').forEach(function (el) {
