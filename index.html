@@ -48,6 +48,7 @@
     </div>
     <a href="#how">How it works</a>
     <a href="#faq">FAQ</a>
+    <a href="#waitlist">Waitlist</a>
     <a class="btn btn-ghost" data-app="web">Open web app</a>
   </nav>
   <button class="nav-toggle" id="navToggle" aria-label="Menu"><svg class="ic" style="width:26px;height:26px" viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
@@ -79,6 +80,20 @@
         <span class="glare"></span>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- WAITLIST -->
+<section class="waitlist reveal" id="waitlist">
+  <div class="wl-card">
+    <span class="eyebrow">Join early</span>
+    <h2>Be first in line at launch</h2>
+    <p class="wl-sub">Drop your email and we'll tell you the moment new features and the full launch land. No spam — only the big updates.</p>
+    <form id="wlForm" class="wl-form" novalidate>
+      <input id="wlEmail" class="wl-input" type="email" inputmode="email" autocomplete="email" placeholder="you@email.com" aria-label="Email address" required>
+      <button class="btn btn-primary wl-btn" type="submit" id="wlBtn">Join the waitlist</button>
+    </form>
+    <p class="wl-msg" id="wlMsg" role="status" aria-live="polite"></p>
   </div>
 </section>
 

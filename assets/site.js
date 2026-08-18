@@ -150,3 +150,42 @@
   }, { threshold: .6 });
   document.querySelectorAll('.num[data-count]').forEach(function (el) { cu.observe(el); });
 })();
+
+// ===== Waitlist signup =====
+(function () {
+  var API = 'https://api.automonie.com';
+  var form = document.getElementById('wlForm');
+  if (!form) return;
+  var email = document.getElementById('wlEmail');
+  var btn = document.getElementById('wlBtn');
+  var msg = document.getElementById('wlMsg');
+  var reEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var v = (email.value || '').trim();
+    if (!reEmail.test(v)) { msg.textContent = 'Please enter a valid email.'; msg.className = 'wl-msg err'; return; }
+    btn.disabled = true; btn.textContent = 'Joining…'; msg.textContent = ''; msg.className = 'wl-msg';
+    fetch(API + '/api/waitlist', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email: v, source: 'website' })
+    }).then(function (r) { return r.json().then(function (d) { return { ok: r.ok, d: d }; }); })
+      .then(function (res) {
+        if (res.ok) {
+          form.reset();
+          msg.textContent = (res.d && res.d.message) || "You're on the list!";
+          msg.className = 'wl-msg';
+          btn.textContent = 'Joined \u2713';
+        } else {
+          msg.textContent = (res.d && res.d.message) || 'Something went wrong. Try again.';
+          msg.className = 'wl-msg err';
+          btn.disabled = false; btn.textContent = 'Join the waitlist';
+        }
+      })
+      .catch(function () {
+        msg.textContent = 'Network error. Please try again.';
+        msg.className = 'wl-msg err';
+        btn.disabled = false; btn.textContent = 'Join the waitlist';
+      });
+  });
+})();

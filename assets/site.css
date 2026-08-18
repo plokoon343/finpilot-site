@@ -530,3 +530,19 @@ a.card{display:block}
   .scene .scrub-bar{transform:scaleX(1)}
   .scene .scrub-fade{opacity:1}
 }
+
+/* ===== Waitlist ===== */
+.waitlist{max-width:var(--maxw);margin:0 auto;padding:22px}
+.wl-card{background:linear-gradient(135deg,var(--green-d),var(--green));border-radius:24px;padding:clamp(28px,5vw,48px);text-align:center;color:#eafff5;box-shadow:var(--shadow)}
+.wl-card .eyebrow{color:#bff3dd}
+.wl-card h2{color:#fff;font-size:clamp(1.5rem,3.4vw,2.25rem);margin:8px 0 8px;letter-spacing:.2px}
+.wl-sub{color:#e6fff4;max-width:54ch;margin:0 auto 22px;font-size:1.02rem;line-height:1.6}
+.wl-form{display:flex;gap:10px;max-width:540px;margin:0 auto;flex-wrap:wrap}
+.wl-input{flex:1;min-width:220px;background:#fff;border:2px solid transparent;border-radius:14px;padding:14px 16px;font-size:16px;color:var(--text);outline:none;transition:border-color .2s}
+.wl-input:focus{border-color:var(--gold)}
+.wl-btn{white-space:nowrap;background:#fff;color:var(--green-d);border:none}
+.wl-btn:hover{background:#eafff5}
+.wl-btn:disabled{opacity:.7;cursor:default}
+.wl-msg{min-height:20px;margin:14px 0 0;font-weight:600;font-size:.96rem;color:#eafff5}
+.wl-msg.err{color:#ffdada}
+@media(max-width:540px){.wl-form{flex-direction:column}.wl-btn{width:100%}}
