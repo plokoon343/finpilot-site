@@ -159,23 +159,29 @@
   var form = document.getElementById('wlForm');
   if (!form) return;
   var email = document.getElementById('wlEmail');
+  var phone = document.getElementById('wlPhone');
+  var group = document.getElementById('wlGroup');
   var btn = document.getElementById('wlBtn');
   var msg = document.getElementById('wlMsg');
   var reEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   form.addEventListener('submit', function (e) {
     e.preventDefault();
     var v = (email.value || '').trim();
+    var ph = (phone && phone.value || '').trim();
+    var digits = ph.replace(/[^\d]/g, '');
     if (!reEmail.test(v)) { msg.textContent = 'Please enter a valid email.'; msg.className = 'wl-msg err'; return; }
+    if (digits.length < 7) { msg.textContent = 'Please enter your WhatsApp number.'; msg.className = 'wl-msg err'; return; }
     btn.disabled = true; btn.textContent = 'Joining…'; msg.textContent = ''; msg.className = 'wl-msg';
     fetch(API + '/api/waitlist', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email: v, source: 'website' })
+      body: JSON.stringify({ email: v, phone: ph, source: 'website' })
     }).then(function (r) { return r.json().then(function (d) { return { ok: r.ok, d: d }; }); })
       .then(function (res) {
         if (res.ok) {
           form.reset();
-          msg.textContent = (res.d && res.d.message) || "You're on the list!";
+          msg.textContent = "You're in! Tap below to join our WhatsApp community.";
+          if (group && res.d && res.d.groupUrl) { group.href = res.d.groupUrl; group.style.display = 'inline-flex'; }
           msg.className = 'wl-msg';
           btn.textContent = 'Joined \u2713';
         } else {
